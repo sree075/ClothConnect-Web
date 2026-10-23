@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Profile | ClothConnect</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* ==================================================
+           PROFILE PAGE
+        ================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fffaf5;
+            color: #4e321f;
+        }
+
+
+        /* ==================================================
+           NAVBAR
+        ================================================== */
+
+        .profile-navbar {
+            width: 100%;
+
+            background: #fffaf5;
+
+            border-bottom: 1px solid #ead8c5;
+
+            box-shadow:
+                0 4px 18px rgba(78, 50, 31, 0.08);
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        .profile-nav {
+            width: 92%;
+            max-width: 1250px;
+
+            min-height: 76px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        /* LOGO */
+
+        .profile-logo {
+            font-size: 26px;
+
+            font-weight: 800;
+
+            color: #654321;
+
+            white-space: nowrap;
+        }
+
+
+        .profile-logo span {
+            color: #9b6b43;
+        }
+
+
+        /* LINKS */
+
+        .profile-links {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 25px;
+
+            list-style: none;
+
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .profile-links li {
+            list-style: none;
+        }
+
+
+        .profile-links a {
+            display: flex;
+            align-items: center;
+
+            height: 76px;
+
+            text-decoration: none;
+
+            color: #5f5147;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            position: relative;
+
+            transition: 0.3s ease;
+        }
+
+
+        .profile-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 17px;
+
+            height: 2px;
+
+            background: #9b6b43;
+
+            transform: scaleX(0);
+
+            transition: 0.3s ease;
+        }
+
+
+        .profile-links a:hover,
+        .profile-links a.active {
+            color: #654321;
+        }
+
+
+        .profile-links a:hover::after,
+        .profile-links a.active::after {
+            transform: scaleX(1);
+        }
+
+
+        /* NAV BUTTON */
+
+        .profile-nav-button {
+            background: #654321;
+
+            color: white;
+
+            padding: 10px 18px;
+
+            border-radius: 9px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            transition: 0.3s ease;
+        }
+
+
+        .profile-nav-button:hover {
+            background: #4e321f;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ==================================================
+           PAGE HEADER
+        ================================================== */
+
+        .profile-page-header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f0dfcf,
+                    #fffaf5
+                );
+
+            padding: 45px 20px 35px;
+
+            text-align: center;
+
+            border-bottom: 1px solid #ead8c5;
+        }
+
+
+        .profile-page-header .label {
+            color: #9b6b43;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .profile-page-header h1 {
+            color: #4e321f;
+
+            font-size: 38px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .profile-page-header p {
+            color: #76685d;
+
+            font-size: 14px;
+        }
+
+
+        /* ==================================================
+           PROFILE AREA
+        ================================================== */
+
+        .profile-container {
+            width: 92%;
+
+            max-width: 850px;
+
+            margin: 45px auto 65px;
+
+            padding: 0;
+        }
+
+
+        .profile-card {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 24px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 12px 35px rgba(78, 50, 31, 0.09);
+        }
+
+
+        /* ==================================================
+           PROFILE TOP
+        ================================================== */
+
+        .profile-top {
+            text-align: center;
+
+            padding-bottom: 28px;
+
+            border-bottom: 1px solid #eee1d6;
+
+            margin-bottom: 28px;
+        }
+
+
+        .default-profile {
+            width: 125px;
+            height: 125px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ead8c5,
+                    #f7eee5
+                );
+
+            border: 5px solid #f1e2d3;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 58px;
+
+            box-shadow:
+                0 8px 20px rgba(78, 50, 31, 0.10);
+        }
+
+
+        #profileName {
+            color: #4e321f;
+
+            font-size: 31px;
+
+            margin-bottom: 7px;
+
+            font-weight: 800;
+        }
+
+
+        .profile-description {
+            color: #85766a;
+
+            font-size: 14px;
+
+            margin-top: 7px;
+        }
+
+
+        /* ==================================================
+           PROFILE DETAILS
+        ================================================== */
+
+        .profile-details {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 16px;
+        }
+
+
+        .profile-info {
+            background: #fffaf5;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .profile-info:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 20px rgba(78, 50, 31, 0.07);
+        }
+
+
+        .profile-info-label {
+            color: #9b6b43;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 7px;
+
+            text-transform: uppercase;
+        }
+
+
+        .profile-info-value {
+            color: #4e321f;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            word-break: break-word;
+        }
+
+
+        /* ROLE */
+
+        .role-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 6px 13px;
+
+            background: #ead8c5;
+
+            color: #654321;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* ==================================================
+           ACTION BUTTONS
+        ================================================== */
+
+        .profile-actions {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 13px;
+
+            margin-top: 30px;
+
+            padding-top: 27px;
+
+            border-top: 1px solid #eee1d6;
+        }
+
+
+        .back-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #654321;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+            transition: 0.3s ease;
+
+            box-shadow:
+                0 7px 17px rgba(78, 50, 31, 0.12);
+        }
+
+
+        .back-btn:hover {
+            background: #4e321f;
+
+            transform: translateY(-2px);
+        }
+
+
+        .dashboard-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #f1e3d5;
+
+            color: #654321;
+
+            padding: 12px 22px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+            border: 1px solid #ead8c5;
+
+            transition: 0.3s ease;
+        }
+
+
+        .dashboard-btn:hover {
+            background: #ead8c5;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        .profile-footer {
+            background: #4e321f;
+
+            text-align: center;
+
+            padding: 24px 20px;
+        }
+
+
+        .profile-footer p {
+            color: #eadfd6;
+
+            font-size: 13px;
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+        ================================================== */
+
+        @media (max-width: 1000px) {
+
+            .profile-nav {
+                flex-wrap: wrap;
+
+                padding: 15px 0;
+            }
+
+
+            .profile-links {
+                width: 100%;
+
+                order: 3;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 12px 20px;
+            }
+
+
+            .profile-links a {
+                height: auto;
+
+                padding: 5px 0;
+            }
+
+
+            .profile-links a::after {
+                bottom: -2px;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .profile-nav {
+                width: 94%;
+
+                flex-direction: column;
+
+                gap: 14px;
+            }
+
+
+            .profile-links {
+                width: 100%;
+
+                flex-wrap: wrap;
+
+                gap: 10px 15px;
+            }
+
+
+            .profile-container {
+                width: 94%;
+
+                margin-top: 30px;
+            }
+
+
+            .profile-card {
+                padding: 28px 20px;
+            }
+
+
+            .profile-page-header h1 {
+                font-size: 31px;
+            }
+
+
+            .profile-details {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .profile-logo {
+                font-size: 23px;
+            }
+
+
+            .profile-page-header {
+                padding: 35px 18px 28px;
+            }
+
+
+            .profile-page-header h1 {
+                font-size: 28px;
+            }
+
+
+            #profileName {
+                font-size: 27px;
+            }
+
+
+            .profile-actions {
+                flex-direction: column;
+            }
+
+
+            .back-btn,
+            .dashboard-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         NAVBAR
+    ================================================== -->
+
+    <header class="profile-navbar">
+
+        <nav class="profile-nav">
+
+
+            <div class="profile-logo">
+                👕 Cloth<span>Connect</span>
+            </div>
+
+
+            <ul class="profile-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="donor.html">
+                        Donor
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="receiver.html">
+                        Receiver
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="clothes.html">
+                        Clothes
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="donate.html">
+                        Donate
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="my-donations.html">
+                        My Donations
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="my-requests.html">
+                        My Requests
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="profile.html" class="active">
+                        Profile
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <a
+                href="index.html"
+                class="profile-nav-button">
+                Home
+            </a>
+
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         PAGE HEADER
+    ================================================== -->
+
+    <section class="profile-page-header">
+
+        <div class="label">
+            MY ACCOUNT
+        </div>
+
+        <h1>
+            My Profile
+        </h1>
+
+        <p>
+            View your ClothConnect account information
+        </p>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         PROFILE
+    ================================================== -->
+
+    <main class="profile-container">
+
+
+        <div class="profile-card">
+
+
+            <!-- PROFILE TOP -->
+
+            <div class="profile-top">
+
+
+                <div class="default-profile">
+                    👤
+                </div>
+
+
+                <h1 id="profileName">
+                    Your Name
+                </h1>
+
+
+                <p class="profile-description">
+                    Welcome to your ClothConnect profile.
+                </p>
+
+            </div>
+
+
+
+            <!-- PROFILE DETAILS -->
+
+            <div class="profile-details">
+
+
+                <div class="profile-info">
+
+                    <div class="profile-info-label">
+                        Email Address
+                    </div>
+
+                    <div
+                        id="profileEmail"
+                        class="profile-info-value">
+                    </div>
+
+                </div>
+
+
+
+                <div class="profile-info">
+
+                    <div class="profile-info-label">
+                        Phone Number
+                    </div>
+
+                    <div
+                        id="profilePhone"
+                        class="profile-info-value">
+                    </div>
+
+                </div>
+
+
+
+                <div class="profile-info">
+
+                    <div class="profile-info-label">
+                        Location
+                    </div>
+
+                    <div
+                        id="profileLocation"
+                        class="profile-info-value">
+                    </div>
+
+                </div>
+
+
+
+                <div class="profile-info">
+
+                    <div class="profile-info-label">
+                        Account Role
+                    </div>
+
+                    <div
+                        id="profileRole"
+                        class="profile-info-value">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- BUTTONS -->
+
+            <div class="profile-actions">
+
+
+                <a
+                    href="index.html"
+                    class="back-btn">
+                    ← Back to Home
+                </a>
+
+
+                <a
+                    href="receiver.html"
+                    class="dashboard-btn">
+                    Go to Dashboard →
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="profile-footer">
+
+        <p>
+            © 2026 ClothConnect. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

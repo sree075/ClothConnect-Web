@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Receiver Notifications - ClothConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="dashboard-navbar">
+
+    <div class="dashboard-nav-inner">
+
+        <a href="index.html" class="dashboard-logo">
+            <span class="logo-icon">👕</span>
+            <span>ClothConnect</span>
+        </a>
+
+        <nav class="dashboard-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="receiver.html">
+                Dashboard
+            </a>
+
+            <a href="clothes.html">
+                Available Clothes
+            </a>
+
+            <a href="my-requests.html">
+                My Requests
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="receiver-notifications.html"
+               class="active">
+                🔔 Notifications
+            </a>
+
+        </nav>
+
+        <div class="dashboard-user">
+
+            <span class="user-name">
+                👤 <span id="navUserName">User</span>
+            </span>
+
+            <button
+                onclick="logoutUser()"
+                class="logout-btn">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="notifications-page">
+
+    <div class="notifications-container">
+
+        <div class="notifications-header">
+
+            <span class="small-heading">
+                RECEIVER NOTIFICATIONS
+            </span>
+
+            <h1>
+                🔔 Notifications
+            </h1>
+
+            <p>
+                Check updates about your clothing requests.
+            </p>
+
+        </div>
+
+
+        <div class="notification-count-box">
+
+            <strong id="receiverNotificationCount">
+                0
+            </strong>
+
+            <span>
+                New Notifications
+            </span>
+
+        </div>
+
+
+        <div id="receiverNotificationsList">
+
+            <div class="empty-notifications">
+
+                <div class="empty-icon">
+                    🔔
+                </div>
+
+                <h2>
+                    No Notifications
+                </h2>
+
+                <p>
+                    You don't have any new updates.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

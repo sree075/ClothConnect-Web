@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Requests | ClothConnect</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* ==================================================
+           RESET
+        ================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fffaf5;
+            color: #4e321f;
+            min-height: 100vh;
+        }
+
+
+        /* ==================================================
+           NAVBAR
+        ================================================== */
+
+        .requests-navbar {
+            width: 100%;
+
+            background: #fffaf5;
+
+            border-bottom: 1px solid #ead8c5;
+
+            box-shadow:
+                0 4px 18px rgba(78, 50, 31, 0.08);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        .requests-nav {
+            width: 92%;
+
+            max-width: 1250px;
+
+            min-height: 76px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        .requests-logo {
+            font-size: 26px;
+
+            font-weight: 800;
+
+            color: #654321;
+
+            white-space: nowrap;
+        }
+
+
+        .requests-logo span {
+            color: #9b6b43;
+        }
+
+
+        .requests-links {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 24px;
+
+            list-style: none;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+
+        .requests-links li {
+            list-style: none;
+        }
+
+
+        .requests-links a {
+            display: flex;
+
+            align-items: center;
+
+            height: 76px;
+
+            color: #5f5147;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            position: relative;
+
+            white-space: nowrap;
+
+            transition: 0.3s ease;
+        }
+
+
+        .requests-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 17px;
+
+            height: 2px;
+
+            background: #9b6b43;
+
+            transform: scaleX(0);
+
+            transition: 0.3s ease;
+        }
+
+
+        .requests-links a:hover,
+        .requests-links a.active {
+            color: #654321;
+        }
+
+
+        .requests-links a:hover::after,
+        .requests-links a.active::after {
+            transform: scaleX(1);
+        }
+
+
+        .requests-nav-right {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .request-user {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #f1e3d5;
+
+            color: #654321;
+
+            padding: 9px 15px;
+
+            border-radius: 25px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .request-logout {
+            border: none;
+
+            background: #654321;
+
+            color: white;
+
+            padding: 10px 17px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+
+        .request-logout:hover {
+            background: #4e321f;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        .requests-hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f2e2d3 0%,
+                    #fffaf5 65%,
+                    #ead8c5 100%
+                );
+
+            border-bottom: 1px solid #ead8c5;
+
+            text-align: center;
+
+            padding: 58px 20px 48px;
+        }
+
+
+        .requests-label {
+            color: #9b6b43;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .requests-hero h1 {
+            color: #4e321f;
+
+            font-size: clamp(36px, 5vw, 50px);
+
+            margin-bottom: 12px;
+        }
+
+
+        .requests-hero h1 span {
+            color: #9b6b43;
+        }
+
+
+        .requests-hero p {
+            color: #6f6258;
+
+            font-size: 16px;
+
+            max-width: 650px;
+
+            margin: auto;
+
+            line-height: 1.7;
+        }
+
+
+        /* ==================================================
+           MAIN
+        ================================================== */
+
+        .requests-page {
+            width: 92%;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 42px 0 70px;
+        }
+
+
+        /* ==================================================
+           STATS
+        ================================================== */
+
+        .request-stats {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 38px;
+        }
+
+
+        .request-stat-card {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 18px;
+
+            padding: 23px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            box-shadow:
+                0 7px 22px rgba(78, 50, 31, 0.06);
+
+            transition: 0.3s ease;
+        }
+
+
+        .request-stat-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 14px 28px rgba(78, 50, 31, 0.12);
+        }
+
+
+        .request-stat-icon {
+            width: 53px;
+
+            height: 53px;
+
+            min-width: 53px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #f1e3d5;
+
+            border-radius: 14px;
+
+            font-size: 23px;
+        }
+
+
+        .request-stat-card h2 {
+            color: #654321;
+
+            font-size: 30px;
+
+            line-height: 1;
+
+            margin-bottom: 4px;
+        }
+
+
+        .request-stat-card p {
+            color: #7b6d62;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        /* ==================================================
+           FILTER
+        ================================================== */
+
+        .request-filter {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 18px;
+
+            padding: 20px 22px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 7px 22px rgba(78, 50, 31, 0.05);
+        }
+
+
+        .request-filter label {
+            display: block;
+
+            color: #654321;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            margin-bottom: 9px;
+        }
+
+
+        .request-filter select {
+            width: 100%;
+
+            height: 48px;
+
+            border: 1px solid #dfcbbb;
+
+            border-radius: 10px;
+
+            background: #fffaf5;
+
+            color: #4e321f;
+
+            padding: 0 14px;
+
+            font-size: 14px;
+
+            outline: none;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+
+        .request-filter select:focus {
+            border-color: #9b6b43;
+
+            box-shadow:
+                0 0 0 3px rgba(155, 107, 67, 0.10);
+        }
+
+
+        /* ==================================================
+           REQUEST LIST
+        ================================================== */
+
+        .requests-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+
+        /* ==================================================
+           GENERATED REQUEST CARD SUPPORT
+        ================================================== */
+
+        .requests-list > * {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 18px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 7px 22px rgba(78, 50, 31, 0.06);
+
+            transition: 0.3s ease;
+        }
+
+
+        .requests-list > *:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 14px 30px rgba(78, 50, 31, 0.11);
+        }
+
+
+        /* Common generated content styling */
+
+        .requests-list h3 {
+            color: #4e321f;
+
+            margin-bottom: 8px;
+        }
+
+
+        .requests-list p {
+            color: #75685d;
+
+            font-size: 14px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .requests-list strong {
+            color: #654321;
+        }
+
+
+        /* ==================================================
+           STATUS BADGES
+        ================================================== */
+
+        .status,
+        .request-status {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
+        .status-pending {
+            background: #f5e7d6;
+
+            color: #8a5a24;
+        }
+
+
+        .status-approved {
+            background: #dfead8;
+
+            color: #48613c;
+        }
+
+
+        .status-rejected {
+            background: #f4dddd;
+
+            color: #8a4747;
+        }
+
+
+        .status-completed {
+            background: #e3dced;
+
+            color: #5c4777;
+        }
+
+
+        /* ==================================================
+           EMPTY REQUESTS
+        ================================================== */
+
+        .no-requests {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 22px;
+
+            padding: 60px 25px;
+
+            margin-top: 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px rgba(78, 50, 31, 0.06);
+        }
+
+
+        .empty-request-icon {
+            width: 76px;
+
+            height: 76px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #f1e3d5;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 33px;
+        }
+
+
+        .no-requests h2 {
+            color: #4e321f;
+
+            font-size: 26px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .no-requests p {
+            color: #817268;
+
+            font-size: 14px;
+
+            margin-bottom: 23px;
+        }
+
+
+        .primary-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #654321;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: 0.3s ease;
+
+            box-shadow:
+                0 7px 17px rgba(78, 50, 31, 0.12);
+        }
+
+
+        .primary-btn:hover {
+            background: #4e321f;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        .requests-footer {
+            background: #4e321f;
+
+            text-align: center;
+
+            padding: 25px 20px;
+        }
+
+
+        .requests-footer p {
+            color: #eadfd6;
+
+            font-size: 13px;
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+        ================================================== */
+
+        @media (max-width: 1100px) {
+
+            .requests-nav {
+                flex-wrap: wrap;
+
+                padding: 15px 0;
+            }
+
+
+            .requests-links {
+                width: 100%;
+
+                order: 3;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 12px 20px;
+            }
+
+
+            .requests-links a {
+                height: auto;
+
+                padding: 5px 0 8px;
+            }
+
+
+            .requests-links a::after {
+                bottom: 0;
+            }
+
+
+            .request-stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 750px) {
+
+            .requests-nav {
+                width: 94%;
+
+                flex-direction: column;
+
+                gap: 14px;
+            }
+
+
+            .requests-links {
+                width: 100%;
+
+                flex-wrap: wrap;
+
+                gap: 10px 16px;
+            }
+
+
+            .requests-nav-right {
+                justify-content: center;
+            }
+
+
+            .requests-page {
+                width: 94%;
+            }
+
+
+            .requests-list {
+                grid-template-columns: 1fr;
+            }
+
+
+            .requests-hero {
+                padding: 45px 18px 40px;
+            }
+
+
+            .requests-hero h1 {
+                font-size: 34px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .request-stats {
+                grid-template-columns: 1fr;
+            }
+
+
+            .requests-logo {
+                font-size: 23px;
+            }
+
+
+            .no-requests {
+                padding: 45px 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body onload="loadMyRequestsPage()">
+
+
+    <!-- ==================================================
+         NAVBAR
+    ================================================== -->
+
+    <header class="requests-navbar">
+
+        <nav class="requests-nav">
+
+
+            <div class="requests-logo">
+                👕 Cloth<span>Connect</span>
+            </div>
+
+
+            <ul class="requests-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="receiver.html">
+                        Dashboard
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="clothes.html">
+                        Available Clothes
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="my-requests.html"
+                        class="active">
+                        My Requests
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="profile.html">
+                        Profile
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="requests-nav-right">
+
+
+                <span
+                    id="requestUserName"
+                    class="request-user">
+                    User
+                </span>
+
+
+                <button
+                    onclick="logoutUser()"
+                    class="request-logout">
+
+                    Logout
+
+                </button>
+
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         HERO
+    ================================================== -->
+
+    <section class="requests-hero">
+
+        <div class="requests-label">
+            MY ACTIVITY
+        </div>
+
+
+        <h1>
+            My <span>Requests</span>
+        </h1>
+
+
+        <p>
+            Track the clothes you have requested
+            from ClothConnect.
+        </p>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         MAIN
+    ================================================== -->
+
+    <main class="requests-page">
+
+
+        <!-- ==================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="request-stats">
+
+
+            <div class="request-stat-card">
+
+                <div class="request-stat-icon">
+                    📩
+                </div>
+
+                <div>
+
+                    <h2 id="totalRequests">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Requests
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="request-stat-card">
+
+                <div class="request-stat-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <h2 id="pendingRequests">
+                        0
+                    </h2>
+
+                    <p>
+                        Pending
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="request-stat-card">
+
+                <div class="request-stat-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <h2 id="approvedRequests">
+                        0
+                    </h2>
+
+                    <p>
+                        Approved
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="request-stat-card">
+
+                <div class="request-stat-icon">
+                    ❌
+                </div>
+
+                <div>
+
+                    <h2 id="rejectedRequests">
+                        0
+                    </h2>
+
+                    <p>
+                        Rejected
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             FILTER
+        ================================================== -->
+
+        <section class="request-filter">
+
+            <label for="requestStatus">
+                Filter by Status
+            </label>
+
+
+            <select
+                id="requestStatus"
+                onchange="filterMyRequests()">
+
+                <option value="all">
+                    All Requests
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Approved">
+                    Approved
+                </option>
+
+                <option value="Rejected">
+                    Rejected
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+            </select>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             REQUEST LIST
+        ================================================== -->
+
+        <section
+            id="requestsList"
+            class="requests-list">
+        </section>
+
+
+
+        <!-- ==================================================
+             EMPTY STATE
+        ================================================== -->
+
+        <div
+            id="noRequests"
+            class="no-requests"
+            style="display: none;">
+
+            <div class="empty-request-icon">
+                📩
+            </div>
+
+
+            <h2>
+                No Requests Yet
+            </h2>
+
+
+            <p>
+                You haven't requested any clothes yet.
+            </p>
+
+
+            <a
+                href="clothes.html"
+                class="primary-btn">
+
+                Browse Clothes
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="requests-footer">
+
+        <p>
+            © 2026 ClothConnect. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

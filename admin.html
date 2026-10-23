@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ClothConnect - Admin Panel</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">ClothConnect</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="donor.html">Donor</a>
+        <a href="receiver.html">Receiver</a>
+        <a href="profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </nav>
+</header>
+
+<section class="page-section">
+
+    <h1>Admin Panel</h1>
+    <p>Manage clothing donations and requests</p>
+
+    <div class="admin-container">
+
+        <h2>Pending Donations</h2>
+
+        <div id="adminDonations">
+            <p>Loading donations...</p>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
+<script>
+    loadAdminDonations();
+</script>
+
+</body>
+</html>

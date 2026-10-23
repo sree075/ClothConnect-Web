@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications - ClothConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="dashboard-navbar">
+
+    <div class="dashboard-nav-inner">
+
+        <a href="index.html" class="dashboard-logo">
+            <span class="logo-icon">👕</span>
+            <span>ClothConnect</span>
+        </a>
+
+        <nav class="dashboard-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="donor.html">Dashboard</a>
+
+            <a href="donate.html">Donate Clothes</a>
+
+            <a href="my-donations.html">My Donations</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="notifications.html" class="active">
+                🔔 Notifications
+            </a>
+
+        </nav>
+
+        <div class="dashboard-user">
+
+            <span class="user-name">
+                👤 <span id="navUserName">User</span>
+            </span>
+
+            <button onclick="logoutUser()" class="logout-btn">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="notifications-page">
+
+    <div class="notifications-container">
+
+        <div class="notifications-header">
+
+            <span class="small-heading">
+                DONOR NOTIFICATIONS
+            </span>
+
+            <h1>
+                🔔 Notifications
+            </h1>
+
+            <p>
+                Review clothing requests received from receivers.
+            </p>
+
+        </div>
+
+
+        <div class="notification-count-box">
+
+            <strong id="notificationCount">0</strong>
+
+            <span>
+                Requests
+            </span>
+
+        </div>
+
+
+        <div id="notificationsList">
+
+            <div class="empty-notifications">
+
+                <div class="empty-icon">
+                    🔔
+                </div>
+
+                <h2>
+                    No Notifications
+                </h2>
+
+                <p>
+                    You don't have any new clothing requests.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

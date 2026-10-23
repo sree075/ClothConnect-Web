@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Donate Clothes | ClothConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fffaf5;
+            color: #4e321f;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .donate-navbar {
+            width: 100%;
+            background: rgba(255, 250, 245, 0.98);
+            border-bottom: 1px solid #ead8c5;
+            box-shadow: 0 4px 18px rgba(78, 50, 31, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .donate-nav {
+            width: 92%;
+            max-width: 1250px;
+            min-height: 78px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .donate-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #4e321f;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .donate-logo span {
+            color: #9b6b43;
+        }
+
+        .donate-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 25px;
+
+            list-style: none;
+        }
+
+        .donate-links li {
+            list-style: none;
+        }
+
+        .donate-links a {
+            text-decoration: none;
+            color: #66584e;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            position: relative;
+            padding: 28px 0;
+
+            transition: 0.3s ease;
+        }
+
+        .donate-links a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: 18px;
+
+            width: 0;
+            height: 2px;
+
+            background: #9b6b43;
+
+            transition: 0.3s ease;
+        }
+
+        .donate-links a:hover,
+        .donate-links a.active {
+            color: #654321;
+        }
+
+        .donate-links a:hover::after,
+        .donate-links a.active::after {
+            width: 100%;
+        }
+
+        .donate-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .donate-user {
+            background: #f1e3d5;
+            color: #654321;
+
+            padding: 10px 15px;
+            border-radius: 25px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .donate-user:hover {
+            background: #ead8c5;
+        }
+
+        .donate-logout {
+            border: none;
+
+            background: #654321;
+            color: white;
+
+            padding: 11px 18px;
+            border-radius: 9px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+        .donate-logout:hover {
+            background: #4e321f;
+            transform: translateY(-2px);
+        }
+
+        /* ================= HERO ================= */
+
+        .donate-page {
+            width: 92%;
+            max-width: 1250px;
+            margin: auto;
+
+            padding: 55px 0 80px;
+        }
+
+        .donate-heading {
+            text-align: center;
+
+            max-width: 800px;
+            margin: 0 auto 45px;
+        }
+
+        .small-title {
+            color: #9b6b43;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 2.5px;
+
+            margin-bottom: 12px;
+        }
+
+        .donate-heading h1 {
+            font-size: 48px;
+            line-height: 1.15;
+
+            color: #4e321f;
+
+            margin-bottom: 15px;
+        }
+
+        .donate-heading h1 span {
+            color: #9b6b43;
+        }
+
+        .donate-heading p:last-child {
+            color: #75685d;
+
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* ================= FORM CONTAINER ================= */
+
+        .donate-container {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        #donationForm {
+            background: white;
+
+            border: 1px solid #ead8c5;
+            border-radius: 24px;
+
+            padding: 38px;
+
+            box-shadow:
+                0 14px 40px rgba(78, 50, 31, 0.09);
+        }
+
+        /* ================= FORM SECTION ================= */
+
+        .form-section {
+            background: #fffaf5;
+
+            border: 1px solid #ead8c5;
+            border-radius: 18px;
+
+            padding: 28px;
+
+            margin-bottom: 25px;
+        }
+
+        .form-section h2 {
+            color: #4e321f;
+
+            font-size: 23px;
+
+            margin-bottom: 7px;
+        }
+
+        .section-description {
+            color: #8a7b70;
+
+            font-size: 13px;
+            line-height: 1.6;
+
+            margin-bottom: 24px;
+        }
+
+        /* ================= FORM GROUP ================= */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+
+            color: #4e321f;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+
+            border: 1px solid #ddcbbb;
+            border-radius: 11px;
+
+            background: white;
+
+            color: #4e321f;
+
+            padding: 13px 14px;
+
+            font-family: inherit;
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.25s ease;
+        }
+
+        .form-group input,
+        .form-group select {
+            height: 48px;
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #aa9a8e;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #9b6b43;
+
+            box-shadow:
+                0 0 0 4px rgba(155, 107, 67, 0.10);
+        }
+
+        /* ================= TWO COLUMN ================= */
+
+        .form-row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+        }
+
+        /* ================= UPLOAD BOX ================= */
+
+        .upload-box {
+            background: white;
+
+            border: 2px dashed #d8c2ae;
+
+            border-radius: 17px;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            transition: 0.3s ease;
+        }
+
+        .upload-box:hover {
+            border-color: #9b6b43;
+            background: #fffcf9;
+        }
+
+        .upload-icon {
+            width: 60px;
+            height: 60px;
+
+            border-radius: 50%;
+
+            background: #f1e3d5;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 12px;
+
+            font-size: 27px;
+        }
+
+        .upload-box p {
+            color: #5f5147;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            margin-bottom: 13px;
+        }
+
+        .upload-box input[type="file"] {
+            width: 100%;
+
+            max-width: 430px;
+
+            margin: auto;
+
+            color: #6d5d50;
+
+            font-size: 13px;
+        }
+
+        /* ================= AGREEMENT ================= */
+
+        .donation-agreement {
+            background: #f7efe8;
+
+            border: 1px solid #ead8c5;
+            border-radius: 14px;
+
+            padding: 17px 18px;
+
+            margin: 5px 0 25px;
+        }
+
+        .donation-agreement label {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 11px;
+
+            color: #604e40;
+
+            font-size: 13px;
+            line-height: 1.6;
+
+            cursor: pointer;
+        }
+
+        .donation-agreement input {
+            margin-top: 3px;
+
+            accent-color: #654321;
+
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ================= BUTTONS ================= */
+
+        .donation-submit {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 15px;
+
+            padding-top: 5px;
+        }
+
+        .donate-submit-btn {
+            border: none;
+
+            background: #654321;
+            color: white;
+
+            padding: 14px 27px;
+
+            border-radius: 11px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+
+            box-shadow:
+                0 8px 18px rgba(101, 67, 33, 0.15);
+        }
+
+        .donate-submit-btn:hover {
+            background: #4e321f;
+
+            transform: translateY(-2px);
+        }
+
+        .cancel-btn {
+            background: white;
+
+            color: #654321;
+
+            padding: 13px 25px;
+
+            border: 1px solid #d8c3b0;
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.3s ease;
+        }
+
+        .cancel-btn:hover {
+            background: #f8eee6;
+
+            border-color: #9b6b43;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .donate-footer {
+            background: #4e321f;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        .donate-footer p {
+            color: #eadfd6;
+
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1100px) {
+
+            .donate-nav {
+                flex-wrap: wrap;
+
+                padding: 15px 0;
+            }
+
+            .donate-links {
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                gap: 12px 20px;
+            }
+
+            .donate-links a {
+                padding: 5px 0;
+            }
+
+            .donate-links a::after {
+                bottom: -3px;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .donate-page {
+                width: 94%;
+
+                padding-top: 35px;
+            }
+
+            .donate-nav {
+                width: 94%;
+
+                flex-direction: column;
+
+                gap: 14px;
+            }
+
+            .donate-right {
+                justify-content: center;
+            }
+
+            .donate-heading h1 {
+                font-size: 34px;
+            }
+
+            #donationForm {
+                padding: 20px;
+
+                border-radius: 18px;
+            }
+
+            .form-section {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .donation-submit {
+                flex-direction: column;
+            }
+
+            .donate-submit-btn,
+            .cancel-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .donate-logo {
+                font-size: 23px;
+            }
+
+            .donate-heading h1 {
+                font-size: 29px;
+            }
+
+            .donate-heading p:last-child {
+                font-size: 14px;
+            }
+
+            .form-section h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="donate-navbar">
+
+        <nav class="donate-nav">
+
+            <!-- LOGO -->
+
+            <a href="index.html" class="donate-logo">
+                👕 Cloth<span>Connect</span>
+            </a>
+
+
+            <!-- LINKS -->
+
+            <ul class="donate-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="donor.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="my-donations.html">
+                        My Donations
+                    </a>
+                </li>
+
+                <li>
+                    <a href="notifications.html">
+                        🔔 Notifications
+                    </a>
+                </li>
+
+                <li>
+                    <a href="profile.html">
+                        Profile
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- USER -->
+
+            <div class="donate-right">
+
+                <a
+                    href="profile.html"
+                    id="navProfileName"
+                    class="donate-user">
+                    User
+                </a>
+
+                <button
+                    onclick="logoutUser()"
+                    class="donate-logout">
+                    Logout
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="donate-page">
+
+
+        <!-- ================= HEADING ================= -->
+
+        <section class="donate-heading">
+
+            <p class="small-title">
+                MAKE A DIFFERENCE
+            </p>
+
+            <h1>
+                Donate Your
+                <span>Clothes</span>
+            </h1>
+
+            <p>
+                Your unused clothes can bring comfort,
+                dignity and happiness to someone in need.
+            </p>
+
+        </section>
+
+
+        <!-- ================= FORM ================= -->
+
+        <div class="donate-container">
+
+            <form id="donationForm">
+
+
+                <!-- ================= CLOTHING INFORMATION ================= -->
+
+                <div class="form-section">
+
+                    <h2>
+                        👕 Clothing Information
+                    </h2>
+
+                    <p class="section-description">
+                        Enter the details of the clothes you
+                        want to donate.
+                    </p>
+
+
+                    <!-- Clothing Name -->
+
+                    <div class="form-group">
+
+                        <label for="itemName">
+                            Clothing Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="itemName"
+                            placeholder="Example: Cotton Shirt"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Category + Gender -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="category">
+                                Category *
+                            </label>
+
+                            <select
+                                id="category"
+                                required>
+
+                                <option value="">
+                                    Select Category
+                                </option>
+
+                                <option value="Shirt">
+                                    Shirt
+                                </option>
+
+                                <option value="Pant">
+                                    Pant
+                                </option>
+
+                                <option value="Dress">
+                                    Dress
+                                </option>
+
+                                <option value="Saree">
+                                    Saree
+                                </option>
+
+                                <option value="Kids Wear">
+                                    Kids Wear
+                                </option>
+
+                                <option value="Jacket">
+                                    Jacket
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="gender">
+                                Suitable For *
+                            </label>
+
+                            <select
+                                id="gender"
+                                required>
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option value="Men">
+                                    Men
+                                </option>
+
+                                <option value="Women">
+                                    Women
+                                </option>
+
+                                <option value="Kids">
+                                    Kids
+                                </option>
+
+                                <option value="Unisex">
+                                    Unisex
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Size + Condition -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="size">
+                                Size *
+                            </label>
+
+                            <select
+                                id="size"
+                                required>
+
+                                <option value="">
+                                    Select Size
+                                </option>
+
+                                <option value="XS">
+                                    XS
+                                </option>
+
+                                <option value="S">
+                                    S
+                                </option>
+
+                                <option value="M">
+                                    M
+                                </option>
+
+                                <option value="L">
+                                    L
+                                </option>
+
+                                <option value="XL">
+                                    XL
+                                </option>
+
+                                <option value="XXL">
+                                    XXL
+                                </option>
+
+                                <option value="Free Size">
+                                    Free Size
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="condition">
+                                Condition *
+                            </label>
+
+                            <select
+                                id="condition"
+                                required>
+
+                                <option value="">
+                                    Select Condition
+                                </option>
+
+                                <option value="Excellent">
+                                    Excellent
+                                </option>
+
+                                <option value="Good">
+                                    Good
+                                </option>
+
+                                <option value="Fair">
+                                    Fair
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Quantity -->
+
+                    <div class="form-group">
+
+                        <label for="quantity">
+                            Quantity *
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            min="1"
+                            placeholder="Enter number of clothes"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Description -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description *
+                        </label>
+
+                        <textarea
+                            id="description"
+                            placeholder="Describe the clothes, colour, material, etc."
+                            required></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= PICKUP INFORMATION ================= -->
+
+                <div class="form-section">
+
+                    <h2>
+                        📍 Pickup Information
+                    </h2>
+
+                    <p class="section-description">
+                        Enter the location where the clothes
+                        can be collected.
+                    </p>
+
+
+                    <!-- City -->
+
+                    <div class="form-group">
+
+                        <label for="location">
+                            City / Area *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="Example: Chennai"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Address -->
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Full Pickup Address *
+                        </label>
+
+                        <textarea
+                            id="address"
+                            placeholder="Enter your complete pickup address"
+                            required></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= PHOTO ================= -->
+
+                <div class="form-section">
+
+                    <h2>
+                        📸 Clothing Photo
+                    </h2>
+
+                    <p class="section-description">
+                        Upload a clear photo of the clothes
+                        you are donating.
+                    </p>
+
+
+                    <div class="upload-box">
+
+                        <div class="upload-icon">
+                            📷
+                        </div>
+
+                        <p>
+                            Choose Clothing Image
+                        </p>
+
+                        <input
+                            type="file"
+                            id="clothingImage"
+                            accept="image/*"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AGREEMENT ================= -->
+
+                <div class="donation-agreement">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="donationAgreement"
+                            required
+                        >
+
+                        <span>
+                            I confirm that the clothes are
+                            clean, usable and suitable for donation.
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- ================= BUTTONS ================= -->
+
+                <div class="donation-submit">
+
+                    <button
+                        type="submit"
+                        class="donate-submit-btn">
+
+                        Submit Donation
+
+                    </button>
+
+
+                    <a
+                        href="donor.html"
+                        class="cancel-btn">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="donate-footer">
+
+        <p>
+            © 2026 ClothConnect. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

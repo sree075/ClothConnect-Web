@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Donations | ClothConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #fffaf5;
+            color: #4e321f;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .donations-navbar {
+            width: 100%;
+            background: rgba(255, 250, 245, 0.98);
+            border-bottom: 1px solid #ead8c5;
+            box-shadow: 0 4px 18px rgba(78, 50, 31, 0.08);
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .donations-nav {
+            width: 92%;
+            max-width: 1250px;
+            min-height: 78px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 24px;
+        }
+
+        .donations-logo {
+            color: #4e321f;
+            text-decoration: none;
+
+            font-size: 28px;
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+        .donations-logo span {
+            color: #9b6b43;
+        }
+
+        .donations-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 23px;
+
+            list-style: none;
+        }
+
+        .donations-links li {
+            list-style: none;
+        }
+
+        .donations-links a {
+            color: #66584e;
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            padding: 28px 0;
+
+            position: relative;
+
+            transition: 0.3s ease;
+
+            white-space: nowrap;
+        }
+
+        .donations-links a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: 18px;
+
+            width: 0;
+            height: 2px;
+
+            background: #9b6b43;
+
+            transition: 0.3s ease;
+        }
+
+        .donations-links a:hover,
+        .donations-links a.active {
+            color: #654321;
+        }
+
+        .donations-links a:hover::after,
+        .donations-links a.active::after {
+            width: 100%;
+        }
+
+        .donations-right {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .donations-user {
+            background: #f1e3d5;
+            color: #654321;
+
+            padding: 10px 15px;
+
+            border-radius: 25px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+        }
+
+        .donations-user:hover {
+            background: #ead8c5;
+        }
+
+        .donations-logout {
+            border: none;
+
+            background: #654321;
+            color: white;
+
+            padding: 11px 18px;
+
+            border-radius: 9px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+        .donations-logout:hover {
+            background: #4e321f;
+            transform: translateY(-2px);
+        }
+
+        /* ================= MAIN ================= */
+
+        .my-donations-page {
+            width: 92%;
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 55px 0 80px;
+        }
+
+        /* ================= PAGE HEADING ================= */
+
+        .donations-heading {
+            text-align: center;
+
+            max-width: 800px;
+
+            margin: 0 auto 38px;
+        }
+
+        .small-title {
+            color: #9b6b43;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 2.5px;
+
+            margin-bottom: 11px;
+        }
+
+        .donations-heading h1 {
+            color: #4e321f;
+
+            font-size: 46px;
+            line-height: 1.15;
+
+            margin-bottom: 13px;
+        }
+
+        .donations-heading h1 span {
+            color: #9b6b43;
+        }
+
+        .donations-heading p:last-child {
+            color: #75685d;
+
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* ================= STATS ================= */
+
+        .donation-stats {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 32px;
+        }
+
+        .donation-stat-card {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            min-height: 120px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            box-shadow:
+                0 8px 24px rgba(78, 50, 31, 0.06);
+
+            transition: 0.3s ease;
+        }
+
+        .donation-stat-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 14px 30px rgba(78, 50, 31, 0.10);
+        }
+
+        .donation-stat-icon {
+            width: 52px;
+            height: 52px;
+
+            min-width: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f1e3d5;
+
+            border-radius: 14px;
+
+            font-size: 24px;
+        }
+
+        .donation-stat-card h2 {
+            color: #654321;
+
+            font-size: 30px;
+
+            line-height: 1;
+
+            margin-bottom: 5px;
+        }
+
+        .donation-stat-card p {
+            color: #7c6d62;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* ================= FILTER ================= */
+
+        .donation-filter {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 17px;
+
+            padding: 18px 20px;
+
+            margin-bottom: 28px;
+
+            display: flex;
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            box-shadow:
+                0 7px 20px rgba(78, 50, 31, 0.05);
+        }
+
+        .donation-filter label {
+            color: #4e321f;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .donation-filter select {
+            min-width: 210px;
+
+            height: 45px;
+
+            border: 1px solid #d9c3b0;
+
+            border-radius: 10px;
+
+            background: #fffaf5;
+
+            color: #5f5147;
+
+            padding: 0 13px;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            outline: none;
+
+            cursor: pointer;
+        }
+
+        .donation-filter select:focus {
+            border-color: #9b6b43;
+
+            box-shadow:
+                0 0 0 4px rgba(155, 107, 67, 0.10);
+        }
+
+        /* ================= DONATIONS LIST ================= */
+
+        .donations-list {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+        /* ================= DONATION CARD ================= */
+
+        .donation-card {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 20px;
+
+            padding: 23px;
+
+            box-shadow:
+                0 8px 24px rgba(78, 50, 31, 0.06);
+
+            transition: 0.3s ease;
+        }
+
+        .donation-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 14px 30px rgba(78, 50, 31, 0.10);
+        }
+
+        .donation-card-top {
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 17px;
+        }
+
+        .donation-item-name {
+            color: #4e321f;
+
+            font-size: 20px;
+            font-weight: 800;
+
+            margin-bottom: 6px;
+        }
+
+        .donation-id {
+            color: #98887c;
+
+            font-size: 11px;
+        }
+
+        .donation-status {
+            padding: 7px 12px;
+
+            border-radius: 30px;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+        .donation-pending {
+            background: #fff6dc;
+            color: #8b661d;
+        }
+
+        .donation-approved {
+            background: #e8f6eb;
+            color: #2f6b3b;
+        }
+
+        .donation-rejected {
+            background: #fff0f0;
+            color: #a03e3e;
+        }
+
+        .donation-info {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 9px;
+
+            margin-bottom: 16px;
+        }
+
+        .donation-info span {
+            background: #fffaf5;
+
+            border: 1px solid #f0e1d4;
+
+            border-radius: 9px;
+
+            padding: 10px;
+
+            color: #6c5c50;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+        }
+
+        .donation-description {
+            color: #75685d;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            background: #fdf8f3;
+
+            border-left: 3px solid #9b6b43;
+
+            padding: 10px 12px;
+
+            border-radius: 8px;
+
+            margin-bottom: 14px;
+        }
+
+        .donation-date {
+            color: #8a7b70;
+
+            font-size: 12px;
+
+            padding-top: 10px;
+
+            border-top: 1px solid #f0e4d9;
+        }
+
+        .donation-card img {
+            width: 100%;
+            height: 220px;
+
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            margin-bottom: 17px;
+        }
+
+        /* ================= EMPTY ================= */
+
+        .no-donations {
+            background: white;
+
+            border: 1px solid #ead8c5;
+
+            border-radius: 20px;
+
+            padding: 55px 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 24px rgba(78, 50, 31, 0.05);
+        }
+
+        .empty-donation-icon {
+            width: 75px;
+            height: 75px;
+
+            background: #f1e3d5;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 16px;
+
+            font-size: 32px;
+        }
+
+        .no-donations h2 {
+            color: #4e321f;
+
+            font-size: 24px;
+
+            margin-bottom: 8px;
+        }
+
+        .no-donations p {
+            color: #8a7b70;
+
+            font-size: 14px;
+
+            margin-bottom: 22px;
+        }
+
+        .primary-btn {
+            display: inline-block;
+
+            background: #654321;
+            color: white;
+
+            padding: 13px 22px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: 0.3s ease;
+        }
+
+        .primary-btn:hover {
+            background: #4e321f;
+
+            transform: translateY(-2px);
+        }
+
+        /* ================= FOOTER ================= */
+
+        .donations-footer {
+            background: #4e321f;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        .donations-footer p {
+            color: #eadfd6;
+
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1150px) {
+
+            .donations-nav {
+                flex-wrap: wrap;
+
+                padding: 15px 0;
+            }
+
+            .donations-links {
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                gap: 12px 20px;
+            }
+
+            .donations-links a {
+                padding: 5px 0;
+            }
+
+            .donations-links a::after {
+                bottom: -3px;
+            }
+
+            .donation-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 850px) {
+
+            .donations-list {
+                grid-template-columns: 1fr;
+            }
+
+            .donation-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .donations-page {
+                width: 94%;
+            }
+
+            .donations-nav {
+                width: 94%;
+
+                flex-direction: column;
+
+                gap: 14px;
+            }
+
+            .donations-right {
+                justify-content: center;
+            }
+
+            .donations-heading h1 {
+                font-size: 35px;
+            }
+
+            .donation-filter {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .donation-filter select {
+                width: 100%;
+            }
+
+            .donation-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .my-donations-page {
+                width: 94%;
+
+                padding-top: 35px;
+            }
+
+            .donations-logo {
+                font-size: 23px;
+            }
+
+            .donation-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .donations-heading h1 {
+                font-size: 30px;
+            }
+
+            .donation-card {
+                padding: 18px;
+            }
+
+            .donation-card-top {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="donations-navbar">
+
+        <nav class="donations-nav">
+
+            <!-- LOGO -->
+
+            <a href="index.html" class="donations-logo">
+                👕 Cloth<span>Connect</span>
+            </a>
+
+
+            <!-- LINKS -->
+
+            <ul class="donations-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="donor.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="donate.html">
+                        Donate Clothes
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="my-donations.html"
+                        class="active">
+                        My Donations
+                    </a>
+                </li>
+
+                <li>
+                    <a href="notifications.html">
+                        🔔 Notifications
+                    </a>
+                </li>
+
+                <li>
+                    <a href="profile.html">
+                        Profile
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- USER -->
+
+            <div class="donations-right">
+
+                <a
+                    href="profile.html"
+                    id="donationUserName"
+                    class="donations-user">
+                    User
+                </a>
+
+                <button
+                    onclick="logoutUser()"
+                    class="donations-logout">
+                    Logout
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="my-donations-page">
+
+
+        <!-- ================= HEADING ================= -->
+
+        <section class="donations-heading">
+
+            <p class="small-title">
+                MY CONTRIBUTION
+            </p>
+
+            <h1>
+                My <span>Donations</span>
+            </h1>
+
+            <p>
+                View and track all the clothes
+                you have donated.
+            </p>
+
+        </section>
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="donation-stats">
+
+
+            <!-- TOTAL -->
+
+            <div class="donation-stat-card">
+
+                <div class="donation-stat-icon">
+                    👕
+                </div>
+
+                <div>
+
+                    <h2 id="totalDonations">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Donations
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PENDING -->
+
+            <div class="donation-stat-card">
+
+                <div class="donation-stat-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <h2 id="pendingDonations">
+                        0
+                    </h2>
+
+                    <p>
+                        Pending
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- APPROVED -->
+
+            <div class="donation-stat-card">
+
+                <div class="donation-stat-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <h2 id="approvedDonations">
+                        0
+                    </h2>
+
+                    <p>
+                        Approved
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REJECTED -->
+
+            <div class="donation-stat-card">
+
+                <div class="donation-stat-icon">
+                    ❌
+                </div>
+
+                <div>
+
+                    <h2 id="rejectedDonations">
+                        0
+                    </h2>
+
+                    <p>
+                        Rejected
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DISTRIBUTED -->
+
+            <div class="donation-stat-card">
+
+                <div class="donation-stat-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <h2 id="distributedDonations">
+                        0
+                    </h2>
+
+                    <p>
+                        Distributed
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FILTER ================= -->
+
+        <section class="donation-filter">
+
+            <label for="donationStatus">
+                Filter Donations by Status
+            </label>
+
+            <select
+                id="donationStatus"
+                onchange="filterMyDonations()">
+
+                <option value="all">
+                    All Donations
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Approved">
+                    Approved
+                </option>
+
+                <option value="Rejected">
+                    Rejected
+                </option>
+
+                <option value="Distributed">
+                    Distributed
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- ================= DONATIONS ================= -->
+
+        <section
+            id="donationsList"
+            class="donations-list">
+        </section>
+
+
+        <!-- ================= EMPTY MESSAGE ================= -->
+
+        <div
+            id="noDonations"
+            class="no-donations"
+            style="display:none;">
+
+            <div class="empty-donation-icon">
+                👕
+            </div>
+
+            <h2>
+                No Donations Yet
+            </h2>
+
+            <p>
+                You haven't donated any clothes yet.
+            </p>
+
+            <a
+                href="donate.html"
+                class="primary-btn">
+                Donate Clothes
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="donations-footer">
+
+        <p>
+            © 2026 ClothConnect. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

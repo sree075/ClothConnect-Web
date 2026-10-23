@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Donor Dashboard - ClothConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="dashboard-navbar">
+
+    <div class="dashboard-nav-inner">
+
+        <!-- LOGO -->
+        <a href="index.html" class="dashboard-logo">
+            <span class="logo-icon">👕</span>
+            <span>ClothConnect</span>
+        </a>
+
+
+        <!-- NAVIGATION -->
+        <nav class="dashboard-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="donor.html" class="active">
+                Dashboard
+            </a>
+
+            <a href="donate.html">
+                Donate Clothes
+            </a>
+
+            <a href="my-donations.html">
+                My Donations
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <!-- NOTIFICATIONS -->
+            <a href="notifications.html" class="notification-nav-link">
+                🔔 Notifications
+                <span id="donorNotificationBadge" class="notification-badge">
+                    0
+                </span>
+            </a>
+
+        </nav>
+
+
+        <!-- USER -->
+        <div class="dashboard-user">
+
+            <span class="user-name">
+                👤 <span id="navUserName">User</span>
+            </span>
+
+            <button onclick="logoutUser()" class="logout-btn">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN DASHBOARD ================= -->
+<main class="donor-dashboard">
+
+
+    <!-- WELCOME SECTION -->
+    <section class="dashboard-welcome">
+
+        <div class="welcome-content">
+
+            <span class="small-heading">
+                DONOR DASHBOARD
+            </span>
+
+            <h1>
+                Welcome back,
+                <span id="welcomeUserName">
+                    Donor
+                </span>! 👋
+            </h1>
+
+            <p>
+                Track your contribution and continue making a difference
+                in someone's life through clothing donations.
+            </p>
+
+        </div>
+
+        <div class="welcome-icon">
+            👕
+        </div>
+
+    </section>
+
+
+    <!-- ================= NOTIFICATION SUMMARY ================= -->
+    <section class="donor-notification-summary">
+
+        <div class="notification-summary-content">
+
+            <div class="notification-summary-icon">
+                🔔
+            </div>
+
+            <div>
+
+                <span class="small-heading">
+                    NOTIFICATIONS
+                </span>
+
+                <h2>
+                    <span id="dashboardNotificationCount">
+                        0
+                    </span>
+                    New Clothing Requests
+                </h2>
+
+                <p>
+                    Check requests received from people who need your donated clothes.
+                </p>
+
+            </div>
+
+        </div>
+
+        <a href="notifications.html" class="primary-dashboard-btn">
+            View Notifications →
+        </a>
+
+    </section>
+
+
+    <!-- ================= STATISTICS ================= -->
+    <section class="donation-stats">
+
+        <!-- TOTAL -->
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                👕
+            </div>
+
+            <div class="stat-info">
+
+                <span class="stat-label">
+                    Total Donations
+                </span>
+
+                <h2 id="totalDonations">
+                    0
+                </h2>
+
+                <p>
+                    Clothes donated
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PENDING -->
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⏳
+            </div>
+
+            <div class="stat-info">
+
+                <span class="stat-label">
+                    Pending
+                </span>
+
+                <h2 id="pendingDonations">
+                    0
+                </h2>
+
+                <p>
+                    Waiting for approval
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPROVED -->
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ✓
+            </div>
+
+            <div class="stat-info">
+
+                <span class="stat-label">
+                    Approved
+                </span>
+
+                <h2 id="approvedDonations">
+                    0
+                </h2>
+
+                <p>
+                    Successfully approved
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- REJECTED -->
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ✕
+            </div>
+
+            <div class="stat-info">
+
+                <span class="stat-label">
+                    Rejected
+                </span>
+
+                <h2 id="rejectedDonations">
+                    0
+                </h2>
+
+                <p>
+                    Needs attention
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ACTION SECTION ================= -->
+    <section class="dashboard-actions">
+
+        <div class="section-heading">
+
+            <span class="small-heading">
+                QUICK ACTIONS
+            </span>
+
+            <h2>
+                What would you like to do?
+            </h2>
+
+            <p>
+                Choose an action to continue your ClothConnect journey.
+            </p>
+
+        </div>
+
+
+        <div class="action-grid">
+
+
+            <!-- DONATE -->
+            <a href="donate.html" class="action-card">
+
+                <div class="action-icon">
+                    👕
+                </div>
+
+                <div class="action-content">
+
+                    <h3>
+                        Donate Clothes
+                    </h3>
+
+                    <p>
+                        Share unused clothes with someone who needs them.
+                    </p>
+
+                    <span class="action-link">
+                        Start Donating →
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- MY DONATIONS -->
+            <a href="my-donations.html" class="action-card">
+
+                <div class="action-icon">
+                    📦
+                </div>
+
+                <div class="action-content">
+
+                    <h3>
+                        My Donations
+                    </h3>
+
+                    <p>
+                        View your donated clothes and their current status.
+                    </p>
+
+                    <span class="action-link">
+                        View Donations →
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- NOTIFICATIONS -->
+            <a href="notifications.html" class="action-card">
+
+                <div class="action-icon">
+                    🔔
+                </div>
+
+                <div class="action-content">
+
+                    <h3>
+                        Notifications
+                    </h3>
+
+                    <p>
+                        Check clothing requests received from receivers.
+                    </p>
+
+                    <span class="action-link">
+                        View Notifications →
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- PROFILE -->
+            <a href="profile.html" class="action-card">
+
+                <div class="action-icon">
+                    👤
+                </div>
+
+                <div class="action-content">
+
+                    <h3>
+                        My Profile
+                    </h3>
+
+                    <p>
+                        View and manage your personal information.
+                    </p>
+
+                    <span class="action-link">
+                        View Profile →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MOTIVATION ================= -->
+    <section class="donor-message">
+
+        <div class="message-content">
+
+            <span class="small-heading">
+                YOUR CONTRIBUTION MATTERS
+            </span>
+
+            <h2>
+                One Donation Can Make A Big Difference ❤️
+            </h2>
+
+            <p>
+                Clothes that are no longer needed by you can provide
+                comfort, confidence and happiness to someone in need.
+            </p>
+
+            <a href="donate.html" class="primary-dashboard-btn">
+                Start Donating →
+            </a>
+
+        </div>
+
+
+        <div class="message-points">
+
+            <div>
+                <strong>01</strong>
+                <span>
+                    Give unused clothes a new purpose.
+                </span>
+            </div>
+
+            <div>
+                <strong>02</strong>
+                <span>
+                    Help families and individuals in need.
+                </span>
+            </div>
+
+            <div>
+                <strong>03</strong>
+                <span>
+                    Build a caring and sustainable community.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="dashboard-footer">
+
+    <p>
+        © 2026 ClothConnect. All Rights Reserved.
+    </p>
+
+    <span>
+        Share Clothes. Spread Kindness. ❤️
+    </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+
+<!-- ================= DONOR NAME + NOTIFICATION COUNT ================= -->
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function () {
+
+        const user = getLoggedInUser();
+
+        if (!user) {
+            return;
+        }
+
+
+        /* ================= DONOR NAME ================= */
+
+        const navName =
+            document.getElementById("navUserName");
+
+        const welcomeName =
+            document.getElementById("welcomeUserName");
+
+
+        if (navName) {
+            navName.textContent = user.name;
+        }
+
+        if (welcomeName) {
+            welcomeName.textContent = user.name;
+        }
+
+
+        /* ================= NOTIFICATION COUNT ================= */
+
+        try {
+
+            const response = await fetch(
+                `${API_URL}/notifications`
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    "Failed to load notifications"
+                );
+            }
+
+            const notifications =
+                await response.json();
+
+
+            const myNotifications =
+                notifications.filter(
+                    notification =>
+
+                        String(
+                            notification.donorEmail || ""
+                        )
+                        .trim()
+                        .toLowerCase()
+
+                        ===
+
+                        String(
+                            user.email || ""
+                        )
+                        .trim()
+                        .toLowerCase()
+                );
+
+
+            /* Navbar badge */
+
+            const badge =
+                document.getElementById(
+                    "donorNotificationBadge"
+                );
+
+
+            if (badge) {
+
+                badge.textContent =
+                    myNotifications.length;
+
+
+                if (myNotifications.length === 0) {
+
+                    badge.style.display = "none";
+
+                } else {
+
+                    badge.style.display = "inline-flex";
+                }
+            }
+
+
+            /* Dashboard notification count */
+
+            const dashboardCount =
+                document.getElementById(
+                    "dashboardNotificationCount"
+                );
+
+
+            if (dashboardCount) {
+
+                dashboardCount.textContent =
+                    myNotifications.length;
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Notification count error:",
+                error
+            );
+
+        }
+
+    }
+
+);
+
+</script>
+
+</body>
+</html>
